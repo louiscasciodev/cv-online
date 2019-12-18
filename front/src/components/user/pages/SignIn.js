@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -10,9 +10,13 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { Copyright } from '../common'
+import ri from '../../../assets/images/1025545688-preview.mp4'
+
+
+// import { Player } from 'video-react';
+// import "video-react/dist/video-react.css"
 
 import "../../../assets/css/user/SignIn.css"
-import { LouisCascio } from "../../../assets/images";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,21 +45,34 @@ export default () => {
   const classes = useStyles();
 
   const [blurred, setBlurred] = useState(true);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setBlurred(!blurred)
-    // if (blurred === false) {
-    //   setTimeout(function () {
-    //     setBlurred(!blurred)
-    //   }, 450);
-    // }
   }
+
+  useEffect(() => {
+    if (blurred === false) {
+      setTimeout(function () {
+        const element = document.getElementsByClassName("image slide-out-blurred-right")
+        element[0].classList.add("display-none")
+      }, 410);
+    }
+  });
 
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7}>
-        <div className={blurred ? "image" : "image slide-out-blurred-right"} />
+        {/* <Player>
+            <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+          </Player> */}
+        {/* <video className='videoTag' autoPlay loop muted>
+          <source src={ri} type='video/mp4' />
+        </video> */}
+        <div className={blurred ? "image" : "image slide-out-blurred-right"}>
+        </div>
+
       </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>

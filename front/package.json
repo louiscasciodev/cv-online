@@ -13,7 +13,8 @@
     "react-fontawesome": "^1.7.1",
     "react-scripts": "3.3.0",
     "reactstrap": "^8.2.0",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.3",
+    "video-react": "^0.14.1"
   },
   "scripts": {
     "start": "react-scripts start",
