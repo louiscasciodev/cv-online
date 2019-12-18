@@ -1,6 +1,4 @@
 import React from 'react'
-import '../../../assets/css/admin/global.css'
-import '../../../assets/css/admin/LoginBar.css'
 
 const LoginBar = (props) => {
 
