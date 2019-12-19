@@ -19,9 +19,6 @@ import ri from '../../../assets/images/1025545688-preview.mp4'
 import "../../../assets/css/user/SignIn.css"
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    height: '100vh',
-  },
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
@@ -39,6 +36,12 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  left: {
+  },
+  videoTag: {
+    height: '100%',
+    width: '100%',
+  }
 }));
 
 export default () => {
@@ -61,54 +64,51 @@ export default () => {
   });
 
   return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7}>
-        {/* <Player>
-            <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
-          </Player> */}
-        {/* <video className='videoTag' autoPlay loop muted>
-          <source src={ri} type='video/mp4' />
-        </video> */}
-        <div className={blurred ? "image" : "image slide-out-blurred-right"}>
-        </div>
-
-      </Grid>
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Unlock Profile
+    <>
+      <video className={classes.videoTag} autoPlay loop muted>
+        <source src={ri} type='video/mp4' />
+      </video>
+      <Grid container>
+        <Grid item xs={false} sm={4} md={7}>
+          <div className={blurred ? "image" : "image slide-out-blurred-right"}>
+          </div>
+        </Grid>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Unlock Profile
           </Typography>
-          <form className={classes.form} noValidate onSubmit={handleSubmit}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Enter
+            <form className={classes.form} noValidate onSubmit={handleSubmit}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Enter
             </Button>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
-          </form>
-        </div>
+              <Box mt={5}>
+                <Copyright />
+              </Box>
+            </form>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 }
