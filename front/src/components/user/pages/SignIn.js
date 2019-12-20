@@ -12,7 +12,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Copyright } from '../common'
 import ri from '../../../assets/images/1025545688-preview.mp4'
 
-
 // import { Player } from 'video-react';
 // import "video-react/dist/video-react.css"
 
@@ -24,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    height: '100vh',
   },
   avatar: {
     margin: theme.spacing(1),
@@ -35,8 +35,6 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-  },
-  left: {
   },
   videoTag: {
     height: '100%',
@@ -65,10 +63,12 @@ export default () => {
 
   return (
     <>
-      <video className={classes.videoTag} autoPlay loop muted>
-        <source src={ri} type='video/mp4' />
-      </video>
       <Grid container>
+        <Box className="backgroundVideo">
+          <video className={classes.videoTag} autoPlay loop muted>
+            <source src="https://ak5.picdn.net/shutterstock/videos/1013545325/preview/stock-footage-many-digital-lines-in-space-abstraction-of-data-communication-computer-generated-background-d.mp4" type='video/mp4' />
+          </video>
+        </Box>
         <Grid item xs={false} sm={4} md={7}>
           <div className={blurred ? "image" : "image slide-out-blurred-right"}>
           </div>
@@ -109,6 +109,7 @@ export default () => {
           </div>
         </Grid>
       </Grid>
+
     </>
   );
 }

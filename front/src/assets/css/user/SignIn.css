@@ -12,6 +12,16 @@ body {
   background-position: center;
 }
 
+.backgroundVideo {
+  position: absolute;
+  width: 100vw;
+  z-index: 1;
+}
+
+* {
+  z-index: 3;
+}
+
 .display-none {
   display: none;
 }
