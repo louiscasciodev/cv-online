@@ -10,7 +10,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { Copyright } from '../common'
-import ri from '../../../assets/images/1025545688-preview.mp4'
+import backgroundVideo from '../../../assets/images/video.mp4'
+import backgroundImage from '../../../assets/images/CV-Louis-Cascio-JavaScript.png'
 
 // import { Player } from 'video-react';
 // import "video-react/dist/video-react.css"
@@ -18,12 +19,14 @@ import ri from '../../../assets/images/1025545688-preview.mp4'
 import "../../../assets/css/user/SignIn.css"
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    height: '100vh',
+  },
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '100vh',
   },
   avatar: {
     margin: theme.spacing(1),
@@ -37,9 +40,8 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2),
   },
   videoTag: {
-    height: '100%',
-    width: '100%',
-  }
+    height: '100vh',
+  },
 }));
 
 export default () => {
@@ -63,17 +65,21 @@ export default () => {
 
   return (
     <>
-      <Grid container>
-        <Box className="backgroundVideo">
-          <video className={classes.videoTag} autoPlay loop muted>
-            <source src="https://ak5.picdn.net/shutterstock/videos/1013545325/preview/stock-footage-many-digital-lines-in-space-abstraction-of-data-communication-computer-generated-background-d.mp4" type='video/mp4' />
-          </video>
-        </Box>
-        <Grid item xs={false} sm={4} md={7}>
-          <div className={blurred ? "image" : "image slide-out-blurred-right"}>
-          </div>
+      <Grid container component="main" className={classes.root}>
+        <Grid className="left-pane" xs={false} sm={5} md={7}>
+          <Grid item className="background-video" xs={false} sm={8} md={8} >
+            <video className={classes.videoTag} autoPlay loop muted>
+              <source src={backgroundVideo} type='video/mp4' />
+            </video>
+          </Grid>
+          <Grid item className="background-video" xs={false} sm={1} md={11} >
+            <img className={blurred ? "image" : "image slide-out-blurred-right"}
+              src={backgroundImage}
+              alt="Curriculum vitæ"
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={7} md={5} component={Paper} square>
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
