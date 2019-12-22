@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from 'react'
-import { Avatar, Box, Button, CssBaseline, Grid, Paper, TextField, Typography } from '@material-ui/core/'
+import {
+  Avatar,
+  Box,
+  Button,
+  CssBaseline,
+  Grid,
+  Paper,
+  TextField,
+  Typography
+} from '@material-ui/core/'
+import { Link } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import { makeStyles } from '@material-ui/core/styles'
 import { Copyright } from '../common'
-import backgroundVideo from '../../../assets/images/video.mp4'
+import backgroundVideo from '../../../assets/videos/video.mp4'
 import backgroundImage from '../../../assets/images/CV-Louis-Cascio-JavaScript.png'
 
 // import { Player } from 'video-react';
 // import "video-react/dist/video-react.css"
 
-import "../../../assets/css/user/SignIn.css"
+import "../../../assets/css/SignIn.css"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -72,7 +82,7 @@ export default () => {
             />
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={7} md={5} component={Paper} square>
+        <Grid item xs={12} sm={7} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
@@ -92,15 +102,17 @@ export default () => {
                 id="password"
                 autoComplete="current-password"
               />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Enter
+              <Link to="home">
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Enter
             </Button>
+              </Link>
               <Box mt={5}>
                 <Copyright />
               </Box>
@@ -108,7 +120,6 @@ export default () => {
           </div>
         </Grid>
       </Grid>
-
     </>
   );
 }

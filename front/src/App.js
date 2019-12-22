@@ -1,10 +1,18 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import { SignIn } from './components/user/pages'
 
 export default () => {
   return (
-    <>
-      <SignIn />
-    </>
+    <Router>
+      <Switch>
+        <Route exact path="/sign-in" component={SignIn} />
+        {/* <Route path="/sign-in" component={SignIn} /> */}
+      </Switch>
+    </Router>
   )
 }
