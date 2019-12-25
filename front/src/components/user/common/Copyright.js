@@ -7,7 +7,7 @@ export default () => {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="#">
-        Louis Cascio
+        Wilder
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}

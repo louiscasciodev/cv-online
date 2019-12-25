@@ -9,7 +9,13 @@ import {
   TextField,
   Typography
 } from '@material-ui/core/'
-import { Link } from "react-router-dom";
+import {
+  useHistory,
+  useLocation,
+  useParams,
+  useRouteMatch,
+  Link
+} from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import { makeStyles } from '@material-ui/core/styles'
 import { Copyright } from '../common'
@@ -19,7 +25,7 @@ import backgroundImage from '../../../assets/images/CV-Louis-Cascio-JavaScript.p
 // import { Player } from 'video-react';
 // import "video-react/dist/video-react.css"
 
-import "../../../assets/css/SignIn.css"
+import "../../../assets/css/sign-in.css"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -47,10 +53,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default () => {
+export default (props) => {
   const classes = useStyles();
 
   const [blurred, setBlurred] = useState(true);
+
+  let location = useLocation();
+  let history = useHistory();
+  let match = useRouteMatch();
+  console.log("location", location);
+  console.log("history", history);
+  console.log("match", match);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +82,7 @@ export default () => {
   return (
     <>
       <Grid container component="main" className={classes.root}>
-        <Grid className="left-pane" xs={false} sm={5} md={7}>
+        <Grid item className="left-pane" xs={false} sm={5} md={7}>
           <Grid item className="background-video" xs={false} sm={8} md={8} >
             <video className={classes.videoTag} autoPlay loop muted>
               <source src={backgroundVideo} type='video/mp4' />

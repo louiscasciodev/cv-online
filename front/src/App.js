@@ -4,13 +4,14 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { SignIn } from './components/user/pages'
+import { Home, SignIn } from './components/user/pages'
 
 export default () => {
   return (
     <Router>
       <Switch>
         <Route exact path="/sign-in" component={SignIn} />
+        <Route exact path="/home" component={Home} />
         {/* <Route path="/sign-in" component={SignIn} /> */}
       </Switch>
     </Router>
