@@ -12,19 +12,14 @@ import {
 import {
   useHistory,
   useLocation,
-  useParams,
   useRouteMatch,
-  Link
 } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import LockOpenOutlinedIcon from '@material-ui/icons/LockOpenOutlined'
 import { makeStyles } from '@material-ui/core/styles'
 import { Copyright } from '../common'
 import backgroundVideo from '../../../assets/videos/video.mp4'
 import backgroundImage from '../../../assets/images/CV-Louis-Cascio-JavaScript.png'
-
-// import { Player } from 'video-react';
-// import "video-react/dist/video-react.css"
-
 import "../../../assets/css/sign-in.css"
 
 const useStyles = makeStyles(theme => ({
@@ -32,10 +27,12 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
   },
   paper: {
-    margin: theme.spacing(8, 4),
+    padding: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#FEFEFE',
+    height: '100%',
   },
   avatar: {
     margin: theme.spacing(1),
@@ -47,13 +44,44 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: '#5E6780',
+    '&:hover': {
+      backgroundColor: '#717EA3',
+    }
+  },
+  field: {
+    '& input + fieldset': {
+      borderColor: theme.palette.grey[300],
+    },
+    '& input:valid + fieldset': {
+      borderColor: theme.palette.grey[300],
+      borderWidth: 2,
+    },
+    '& input:invalid + fieldset': {
+      borderColor: theme.palette.grey[300],
+      borderWidth: 2,
+    },
+    '& input:valid:focus + fieldset': {
+      borderColor: theme.palette.secondary.main,
+      borderLeftWidth: 6,
+      padding: '4px !important',
+    },
+    '& input:invalid:focus + fieldset': {
+      borderColor: theme.palette.secondary.main,
+    },
+    '& input:invalid:hover + fieldset': {
+      borderColor: theme.palette.secondary.main,
+    },
+    '& input:valid:hover + fieldset': {
+      borderColor: theme.palette.secondary.main,
+    },
   },
   videoTag: {
     height: '100vh',
   },
 }));
 
-export default (props) => {
+export default () => {
   const classes = useStyles();
 
   const [blurred, setBlurred] = useState(true);
@@ -67,21 +95,36 @@ export default (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setBlurred(!blurred)
-  }
-
-  useEffect(() => {
+    setBlurred(!blurred);
     if (blurred === false) {
       setTimeout(function () {
         const element = document.getElementsByClassName("image slide-out-blurred-right")
         element[0].classList.add("display-none")
       }, 410);
     }
-  });
+    setTimeout(function () {
+      history.push("/home")
+    }, 410);
+  }
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setBlurred(!blurred)
+  // }
+
+  // useEffect(() => {
+  //   if (blurred === false) {
+  //     setTimeout(function () {
+  //       const element = document.getElementsByClassName("image slide-out-blurred-right")
+  //       element[0].classList.add("display-none")
+  //     }, 410);
+  //   }
+  // });
 
   return (
     <>
       <Grid container component="main" className={classes.root}>
+        <CssBaseline />
         <Grid item className="left-pane" xs={false} sm={5} md={7}>
           <Grid item className="background-video" xs={false} sm={8} md={8} >
             <video className={classes.videoTag} autoPlay loop muted>
@@ -98,7 +141,7 @@ export default (props) => {
         <Grid item xs={12} sm={7} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
+              {blurred ? <LockOutlinedIcon /> : <LockOpenOutlinedIcon />}
             </Avatar>
             <Typography component="h1" variant="h5">
               Unlock Profile
@@ -114,18 +157,17 @@ export default (props) => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                className={classes.field}
               />
-              <Link to="home">
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                >
-                  Enter
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Enter
             </Button>
-              </Link>
               <Box mt={5}>
                 <Copyright />
               </Box>
