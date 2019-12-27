@@ -81,45 +81,45 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default () => {
+export default (props) => {
   const classes = useStyles();
+  const realPass = 'reach me'
 
   const [blurred, setBlurred] = useState(true);
+  const [textFieldValue, settextFieldValue] = useState('');
+
 
   let location = useLocation();
   let history = useHistory();
   let match = useRouteMatch();
-  console.log("location", location);
-  console.log("history", history);
-  console.log("match", match);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setBlurred(!blurred);
-    if (blurred === false) {
-      setTimeout(function () {
-        const element = document.getElementsByClassName("image slide-out-blurred-right")
-        element[0].classList.add("display-none")
-      }, 410);
-    }
-    setTimeout(function () {
-      history.push("/home")
-    }, 410);
+  console.log("password", textFieldValue);
+
+
+  const handleTextFieldChange = (e) => {
+    settextFieldValue(e.target.value);
   }
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setBlurred(!blurred)
-  // }
-
-  // useEffect(() => {
-  //   if (blurred === false) {
-  //     setTimeout(function () {
-  //       const element = document.getElementsByClassName("image slide-out-blurred-right")
-  //       element[0].classList.add("display-none")
-  //     }, 410);
-  //   }
-  // });
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('les props',props)
+    if (textFieldValue === realPass) {
+      props.log()
+      setBlurred(!blurred);
+      if (blurred === false) {
+        setTimeout(function () {
+          const element = document.getElementsByClassName("image slide-out-blurred-right")
+          element[0].classList.add("display-none")
+        }, 410);
+      }
+      setTimeout(function () {
+        history.push("/home")
+      }, 410);
+    }
+    else {
+      history.push("/sign-in")
+    }
+  }
 
   return (
     <>
@@ -157,6 +157,8 @@ export default () => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={textFieldValue}
+                onChange={handleTextFieldChange}
                 className={classes.field}
               />
               <Button

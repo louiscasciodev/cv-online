@@ -25,16 +25,24 @@ const louisTheme = createMuiTheme({
 
 export default () => {
 
-  const [isAuthenticated, setisAuthenticated] = useState(true);
+  const [isAuthenticated, setisAuthenticated] = useState(false);
+
+  const login = () => {
+    setisAuthenticated(true)
+  }
 
   return (
     <ThemeProvider theme={louisTheme}>
       <CssBaseline />
       <Router>
         <Switch>
-          <Route exact path="/sign-in" component={SignIn} />
+          <Route exact path="/sign-in">
+            <SignIn log={login} />
+          </Route>
           {isAuthenticated ? (
-            <Route exact path="/home" component={Home} />
+            <Route exact path="/home">
+              <Home />
+            </Route>
           ) : (
               <Redirect
                 to={{
