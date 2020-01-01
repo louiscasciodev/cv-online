@@ -89,9 +89,9 @@ export default (props) => {
   const [textFieldValue, settextFieldValue] = useState('');
 
 
-  let location = useLocation();
-  let history = useHistory();
-  let match = useRouteMatch();
+  const location = useLocation();
+  const history = useHistory();
+  const match = useRouteMatch();
 
   console.log("password", textFieldValue);
 
@@ -144,7 +144,7 @@ export default (props) => {
               {blurred ? <LockOutlinedIcon /> : <LockOpenOutlinedIcon />}
             </Avatar>
             <Typography component="h1" variant="h5">
-              Unlock Profile
+              Débloquer le profil
           </Typography>
             <form className={classes.form} noValidate onSubmit={handleSubmit}>
               <TextField
@@ -153,7 +153,7 @@ export default (props) => {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Mot de passe"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -168,7 +168,7 @@ export default (props) => {
                 color="primary"
                 className={classes.submit}
               >
-                Enter
+                Entrer
             </Button>
               <Box mt={5}>
                 <Copyright />

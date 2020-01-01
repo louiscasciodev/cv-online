@@ -1,6 +1,13 @@
 import React from 'react';
 import clsx from 'clsx';
 import {
+  Switch,
+  Route,
+  useHistory,
+  useLocation,
+  useRouteMatch,
+} from "react-router-dom";
+import {
   AppBar,
   Box,
   Container,
@@ -16,8 +23,10 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { makeStyles } from '@material-ui/core/styles';
-import { mainListItems, secondaryListItems } from './listItems';
+import ListItems from './ListItems';
 import { Copyright } from '../common'
+import { HomeCv, HomeJuleEtLili, HomePlantMe } from './'
+import "../../../assets/css/home.css"
 
 const drawerWidth = 240;
 
@@ -102,7 +111,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default () => {
+export default (props) => {
+
+  const location = useLocation();
+  const history = useHistory();
+  const path = useRouteMatch();
+
+  console.log('home', path.path)
+
+
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -141,7 +159,7 @@ export default () => {
         <div className={classes.toolbarIcon}>
           <Typography variant="subtitle2" color="inherit">
             Louis Cascio
-    </Typography>
+          </Typography>
           <IconButton onClick={handleDrawerClose}>
 
             <ChevronLeftIcon />
@@ -149,9 +167,11 @@ export default () => {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
+        <List>
+          <ListItems />
+        </List>
+        {/* <Divider />
+        <List>{secondaryListItems}</List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -160,6 +180,13 @@ export default () => {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
+                <Switch>
+                  <Route path={`${path.path}/juleetlili`} component={HomeJuleEtLili} />
+                  <Route path={`${path.path}/plantme`} component={HomePlantMe} />
+                  <Route path={`${path.path}/cv`} >
+                    <HomeCv />
+                  </Route>
+                </Switch>
               </Paper>
             </Grid>
             {/* Recent Deposits */}
@@ -178,6 +205,6 @@ export default () => {
           </Box>
         </Container>
       </main>
-    </div>
+    </div >
   );
 }

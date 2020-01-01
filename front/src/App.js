@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {
-  BrowserRouter as Router, Switch, Route, Redirect, useHistory, useLocation, useRouteMatch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Home, SignIn } from './components/user/pages'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -40,7 +38,7 @@ export default () => {
             <SignIn log={login} />
           </Route>
           {isAuthenticated ? (
-            <Route exact path="/home">
+            <Route path="/home">
               <Home />
             </Route>
           ) : (
