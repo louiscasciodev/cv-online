@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Avatar,
   Box,
@@ -11,8 +11,6 @@ import {
 } from '@material-ui/core/'
 import {
   useHistory,
-  useLocation,
-  useRouteMatch,
 } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import LockOpenOutlinedIcon from '@material-ui/icons/LockOpenOutlined'
@@ -89,11 +87,11 @@ export default (props) => {
   const [textFieldValue, settextFieldValue] = useState('');
 
 
-  const location = useLocation();
+  // const location = useLocation();
+  // const match = useRouteMatch();
   const history = useHistory();
-  const match = useRouteMatch();
 
-  console.log("password", textFieldValue);
+  // console.log("password", textFieldValue);
 
 
   const handleTextFieldChange = (e) => {
@@ -102,7 +100,7 @@ export default (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('les props',props)
+    // console.log('les props',props)
     if (textFieldValue === realPass) {
       props.log()
       setBlurred(!blurred);

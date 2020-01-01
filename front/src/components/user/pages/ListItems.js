@@ -1,10 +1,6 @@
 import React from 'react';
 import {
-  Switch,
-  Route,
   Link,
-  useHistory,
-  useLocation,
   useRouteMatch,
 } from "react-router-dom";
 import ListItem from '@material-ui/core/ListItem';
@@ -13,15 +9,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FindInPageIcon from '@material-ui/icons/FindInPage';
-import PhotoIcon from '@material-ui/icons/Photo';
+// import PhotoIcon from '@material-ui/icons/Photo';
 import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
 
 export default () => {
 
-  const location = useLocation();
-  const history = useHistory();
+  // const location = useLocation();
+  // const history = useHistory();
   const path = useRouteMatch();
-  console.log(path)
 
   return (
     <div>

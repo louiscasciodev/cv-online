@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Home, SignIn } from './components/user/pages'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';

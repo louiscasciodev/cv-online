@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import {
   Switch,
   Route,
-  useHistory,
-  useLocation,
+  // useHistory,
+  // useLocation,
   useRouteMatch,
 } from "react-router-dom";
 import {
@@ -113,11 +113,11 @@ const useStyles = makeStyles(theme => ({
 
 export default (props) => {
 
-  const location = useLocation();
-  const history = useHistory();
+  // const location = useLocation();
+  // const history = useHistory();
   const path = useRouteMatch();
 
-  console.log('home', path.path)
+  // console.log('home', path.path)
 
 
 
