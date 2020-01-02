@@ -1,29 +1,28 @@
-import React, { useEffect } from 'react'
-import axios from 'axios'
+import React from 'react';
+import {
+  Grid,
+  Paper,
+} from '@material-ui/core/';
 
 export default () => {
-
-  const getRepos = () => {
-  axios.get('https://api.github.com/users/louiscasciodev/repos')
-  .then((response) => {
-    const repos = response.data 
-    console.log("test repos", repos)
-    // console.log(response.data);
-    // console.log(response.status);
-    // console.log(response.statusText);
-    // console.log(response.headers);
-    // console.log(response.config);
-  });
-}
-
-useEffect(() => {
-  getRepos()
-});
-
-
   return (
-    <>
-    Jule et Lili
-    </>
+    <Grid container spacing={3}>
+      {/* Chart */}
+      <Grid item xs={12} md={8} lg={9}>
+        <Paper>
+          Jule et Lily
+        </Paper>
+      </Grid>
+      {/* Recent Deposits */}
+      <Grid item xs={12} md={4} lg={3}>
+        <Paper>
+        </Paper>
+      </Grid>
+      {/* Recent Orders */}
+      <Grid item xs={12}>
+        <Paper>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 }

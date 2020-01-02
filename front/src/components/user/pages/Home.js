@@ -25,7 +25,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItems from './ListItems';
 import { Copyright } from '../common'
-import { HomeCv, HomeJuleEtLili, HomePlantMe } from './'
+import { HomeCv, HomeJuleEtLili, HomePlantMe, Github } from './'
 import "../../../assets/css/home.css"
 
 const drawerWidth = 240;
@@ -181,6 +181,8 @@ export default (props) => {
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
                 <Switch>
+                  <Route exact path={`${path.path}/`} component={Github} />
+                  <Route path={`${path.path}/allprojects`} component={Github} />
                   <Route path={`${path.path}/juleetlili`} component={HomeJuleEtLili} />
                   <Route path={`${path.path}/plantme`} component={HomePlantMe} />
                   <Route path={`${path.path}/cv`} >
