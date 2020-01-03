@@ -1,8 +1,11 @@
-import React from 'react';
+// Modules
+import React from 'react'
+
+// MUI Components
 import {
   Grid,
   Paper,
-} from '@material-ui/core/';
+} from '@material-ui/core/'
 
 export default () => {
   return (

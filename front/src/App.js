@@ -1,9 +1,15 @@
+// Modules
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+
+// Personals Components
 import { Home, SignIn } from './components/user/pages'
+
+// MUI Components
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+// Creating Project Theme with JSS
 const louisTheme = createMuiTheme({
   palette: {
     primary: {
@@ -22,9 +28,7 @@ const louisTheme = createMuiTheme({
 });
 
 export default () => {
-
   const [isAuthenticated, setisAuthenticated] = useState(false);
-
   const login = () => {
     setisAuthenticated(true)
   }
@@ -40,14 +44,10 @@ export default () => {
           {isAuthenticated ? (
             <Route path="/home">
               <Home />
-            </Route>
-          ) : (
-              <Redirect
-                to={{
-                  pathname: "/sign-in",
-                }}
-              />
-            )}
+            </Route>)
+            :
+            (<Redirect to={{ pathname: "/sign-in" }} />)
+          }
         </Switch>
       </Router>
     </ThemeProvider>

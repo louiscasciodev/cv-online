@@ -1,23 +1,26 @@
-import React from 'react';
+// Modules
+import React from 'react'
 import {
   Link,
   useRouteMatch,
-} from "react-router-dom";
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import FindInPageIcon from '@material-ui/icons/FindInPage';
-import AttachmentIcon from '@material-ui/icons/Attachment';
-import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
-import ListIcon from '@material-ui/icons/List';
+} from "react-router-dom"
+
+// MUI Components
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  ListSubheader,
+} from '@material-ui/core/'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import AttachmentIcon from '@material-ui/icons/Attachment'
+import LocalFloristIcon from '@material-ui/icons/LocalFlorist'
+import ListIcon from '@material-ui/icons/List'
 
 export default () => {
-
-  // const location = useLocation();
-  // const history = useHistory();
-  const path = useRouteMatch();
+  // const location = useLocation()
+  // const history = useHistory()
+  const path = useRouteMatch()
 
   return (
     <div>
@@ -49,29 +52,11 @@ export default () => {
       <Link to={`${path.path}/cv`}>
         <ListItem button>
           <ListItemIcon>
-          <AttachmentIcon/>
+            <AttachmentIcon />
           </ListItemIcon>
           <ListItemText primary="Curriculum vitæ" />
         </ListItem>
       </Link>
-      {/* <ListItem button>
-      <ListItemIcon>
-        <PhotoIcon />
-      </ListItemIcon>
-      <ListItemText primary="Charlotte Urbex" />
-    </ListItem> */}
     </div>
   )
 }
-
-// export const secondaryListItems = (
-//   <div>
-//     <ListSubheader inset>Téléchargements</ListSubheader>
-//     <ListItem button>
-//       <ListItemIcon>
-//         <FindInPageIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Curriculum vitæ" />
-//     </ListItem>
-//   </div>
-// );

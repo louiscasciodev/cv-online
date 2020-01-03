@@ -1,35 +1,37 @@
-import React from 'react';
-import clsx from 'clsx';
+// Modules
+import React from 'react'
+import clsx from 'clsx'
 import {
   Switch,
   Route,
-  // useHistory,
-  // useLocation,
   useRouteMatch,
-} from "react-router-dom";
+} from "react-router-dom"
+
+// Personals Components
+import { HomeCv, HomeJuleEtLili, HomePlantMe, Github, ListItems } from './'
+import { Copyright } from '../common'
+
+// Personal CSS
+import "../../../assets/css/home.css"
+
+// MUI Components
+import { makeStyles } from '@material-ui/core/styles'
 import {
   AppBar,
   Box,
   Container,
   Divider,
   Drawer,
-  Grid,
   IconButton,
   List,
-  Paper,
   Toolbar,
   Typography,
-} from '@material-ui/core/';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { makeStyles } from '@material-ui/core/styles';
-import ListItems from './ListItems';
-import { Copyright } from '../common'
-import { HomeCv, HomeJuleEtLili, HomePlantMe, Github } from './'
-import "../../../assets/css/home.css"
+} from '@material-ui/core/'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import MenuIcon from '@material-ui/icons/Menu'
 
-const drawerWidth = 240;
-
+// Styling with JSS
+const drawerWidth = 240
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -111,25 +113,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default (props) => {
-
-  // const location = useLocation();
-  // const history = useHistory();
+export default () => {
   const path = useRouteMatch();
-
-  // console.log('home', path.path)
-
-
-
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>

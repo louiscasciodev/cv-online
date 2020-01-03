@@ -1,4 +1,17 @@
+// Modules
 import React, { useState } from 'react'
+import { useHistory } from "react-router-dom"
+
+// Personals Components
+import { Copyright } from '../common'
+import backgroundVideo from '../../../assets/videos/video.mp4'
+import backgroundImage from '../../../assets/images/CV-Louis-Cascio-JavaScript.png'
+
+// Personal CSS
+import "../../../assets/css/sign-in.css"
+
+// MUI Components
+import { makeStyles } from '@material-ui/core/styles'
 import {
   Avatar,
   Box,
@@ -9,17 +22,10 @@ import {
   TextField,
   Typography
 } from '@material-ui/core/'
-import {
-  useHistory,
-} from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import LockOpenOutlinedIcon from '@material-ui/icons/LockOpenOutlined'
-import { makeStyles } from '@material-ui/core/styles'
-import { Copyright } from '../common'
-import backgroundVideo from '../../../assets/videos/video.mp4'
-import backgroundImage from '../../../assets/images/CV-Louis-Cascio-JavaScript.png'
-import "../../../assets/css/sign-in.css"
 
+// Styling with JSS
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100vh',
@@ -77,42 +83,37 @@ const useStyles = makeStyles(theme => ({
   videoTag: {
     height: '100vh',
   },
-}));
+}))
 
 export default (props) => {
-  const classes = useStyles();
+  const classes = useStyles()
   const realPass = 'reach me'
 
-  const [blurred, setBlurred] = useState(true);
-  const [textFieldValue, settextFieldValue] = useState('');
-
-
-  // const location = useLocation();
-  // const match = useRouteMatch();
-  const history = useHistory();
-
-  // console.log("password", textFieldValue);
+  const [blurred, setBlurred] = useState(true)
+  const [textFieldValue, settextFieldValue] = useState('')
+  // const location = useLocation()
+  // const match = useRouteMatch()
+  const history = useHistory()
 
 
   const handleTextFieldChange = (e) => {
-    settextFieldValue(e.target.value);
+    settextFieldValue(e.target.value)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log('les props',props)
     if (textFieldValue === realPass) {
       props.log()
-      setBlurred(!blurred);
+      setBlurred(!blurred)
       if (blurred === false) {
         setTimeout(function () {
           const element = document.getElementsByClassName("image slide-out-blurred-right")
           element[0].classList.add("display-none")
-        }, 410);
+        }, 410)
       }
       setTimeout(function () {
         history.push("/home")
-      }, 410);
+      }, 410)
     }
     else {
       history.push("/sign-in")
@@ -120,61 +121,59 @@ export default (props) => {
   }
 
   return (
-    <>
-      <Grid container component="main" className={classes.root}>
-        <CssBaseline />
-        <Grid item className="left-pane" xs={false} sm={5} md={7}>
-          <Grid item className="background-video" xs={false} sm={8} md={8} >
-            <video className={classes.videoTag} autoPlay loop muted>
-              <source src={backgroundVideo} type='video/mp4' />
-            </video>
-          </Grid>
-          <Grid item className="background-video" xs={false} sm={1} md={11} >
-            <img className={blurred ? "image" : "image slide-out-blurred-right"}
-              src={backgroundImage}
-              alt="Curriculum vitæ"
-            />
-          </Grid>
+    <Grid container component="main" className={classes.root}>
+      <CssBaseline />
+      <Grid item className="left-pane" xs={false} sm={5} md={7}>
+        <Grid item className="background-video" xs={false} sm={8} md={8} >
+          <video className={classes.videoTag} autoPlay loop muted>
+            <source src={backgroundVideo} type='video/mp4' />
+          </video>
         </Grid>
-        <Grid item xs={12} sm={7} md={5} component={Paper} elevation={6} square>
-          <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              {blurred ? <LockOutlinedIcon /> : <LockOpenOutlinedIcon />}
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Débloquer le profil
-          </Typography>
-            <form className={classes.form} noValidate onSubmit={handleSubmit}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Mot de passe"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={textFieldValue}
-                onChange={handleTextFieldChange}
-                className={classes.field}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Entrer
-            </Button>
-              <Box mt={5}>
-                <Copyright />
-              </Box>
-            </form>
-          </div>
+        <Grid item className="background-video" xs={false} sm={1} md={11} >
+          <img className={blurred ? "image" : "image slide-out-blurred-right"}
+            src={backgroundImage}
+            alt="Curriculum vitæ"
+          />
         </Grid>
       </Grid>
-    </>
-  );
+      <Grid item xs={12} sm={7} md={5} component={Paper} elevation={6} square>
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            {blurred ? <LockOutlinedIcon /> : <LockOpenOutlinedIcon />}
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Débloquer le profil
+          </Typography>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Mot de passe"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={textFieldValue}
+              onChange={handleTextFieldChange}
+              className={classes.field}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Entrer
+            </Button>
+            <Box mt={5}>
+              <Copyright />
+            </Box>
+          </form>
+        </div>
+      </Grid>
+    </Grid>
+  )
 }
