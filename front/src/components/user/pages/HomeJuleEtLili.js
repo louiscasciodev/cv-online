@@ -10,7 +10,7 @@ export default () => {
       {/* Chart */}
       <Grid item xs={12} md={8} lg={9}>
         <Paper>
-          Jule et Lily
+          Jule et Lili
         </Paper>
       </Grid>
       {/* Recent Deposits */}

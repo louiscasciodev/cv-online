@@ -176,32 +176,15 @@ export default (props) => {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Switch>
-                  <Route exact path={`${path.path}/`} component={Github} />
-                  <Route path={`${path.path}/allprojects`} component={Github} />
-                  <Route path={`${path.path}/juleetlili`} component={HomeJuleEtLili} />
-                  <Route path={`${path.path}/plantme`} component={HomePlantMe} />
-                  <Route path={`${path.path}/cv`} >
-                    <HomeCv />
-                  </Route>
-                </Switch>
-              </Paper>
-            </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-              </Paper>
-            </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-              </Paper>
-            </Grid>
-          </Grid>
+          <Switch>
+            <Route exact path={`${path.path}/`} component={Github} />
+            <Route path={`${path.path}/allprojects`} component={Github} />
+            <Route path={`${path.path}/juleetlili`} component={HomeJuleEtLili} />
+            <Route path={`${path.path}/plantme`} component={HomePlantMe} />
+            <Route path={`${path.path}/cv`} >
+              <HomeCv />
+            </Route>
+          </Switch>
           <Box pt={4}>
             <Copyright />
           </Box>
