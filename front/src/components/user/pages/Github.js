@@ -52,18 +52,22 @@ export default () => {
 
   const [data, setData] = useState([]);
   const [dataReadMe, setDataReadMe] = useState([]);
+  // const [repoName, setRepoName] = useState([]);
 
-  const getRepos = () => {
+  const getRepos = (repo) => {
     axios
       .get('https://api.github.com/users/louiscasciodev/repos?sort=created')
       .then(result => setData(result.data));
-  }
-
-  const getReadMe = (repo) => {
     axios
       .get(`https://api.github.com/repos/louiscasciodev/${repo}/readme`)
       .then(result => setDataReadMe(result.data));
   }
+
+  // const getReadMe = (repo) => {
+  //   axios
+  //     .get(`https://api.github.com/repos/louiscasciodev/${repo}/readme`)
+  //     .then(result => setDataReadMe(result.data));
+  // }
 
   const getDate = (date) => {
     let dateobj = new Date(`${date}`);
@@ -72,11 +76,10 @@ export default () => {
     return b
   }
 
-  const getContent = (content) => {
-    const result = atob(content)
-    return result
-  }
-
+  // const getContent = (content) => {
+  //   const result = atob(content)
+  //   return result
+  // }
 
   useEffect(() => {
     getRepos()
@@ -86,57 +89,20 @@ export default () => {
     );
   }, []);
 
-
-  // const [repos, setRepos] = useState();
-
-  // const getRepos = () => {
-  //   axios.get('https://api.github.com/users/louiscasciodev/repos')
-  //     .then((response) => {
-  //       setRepos(response.data)
-  //       console.log("test repos", repos)
-  //       // console.log(response.data);
-  //       // console.log(response.status);
-  //       // console.log(response.statusText);
-  //       // console.log(response.headers);
-  //       // console.log(response.config);
-  //     });
-  // }
-
   // useEffect(() => {
-  //   getRepos()
-  // });
+  //   getReadMe()
+  // }, [data]);
 
   return (
     <>
-      {/* {console.log(data)}
-      {data && data
-      .map((item, key) => (
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
-              Mis à jour le {getDate(item.updated_at)}
-            </Typography>
-            <Typography variant="h5" component="h2">
-              {item.name}
-            </Typography>
-            <Typography className={classes.pos} color="textSecondary">
-              adjective
-            </Typography>
-            <Typography variant="body2" component="p">
-              well meaning and kindly.
-            <br />
-              {'"a benevolent smile"'}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Voir sur Github</Button>
-          </CardActions>
-        </Card> */}
+      {/* {console.log(repoName)} */}
       <Grid container className={classes.container}>
-        {console.log("dateRepo", data)}
+        {console.log("data", data)}
+        {console.log("readMe", dataReadMe)}
         {data && data
           .map((item, key) => (
             <Card className={classes.card}>
+              {/* {setRepoName(item.name)} */}
               <CardHeader
                 avatar={
                   item.description == "react" ?
@@ -159,11 +125,11 @@ export default () => {
               title="Paella dish"
             /> */}
               <CardContent>
-                {/* {item.description} */}
-                {getReadMe(item.name)}
-                    <Typography variant="body2" color="textSecondary" component="p">
-                      {dataReadMe.name}
-                    </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <Typography variant="subtitle2">README.md</Typography>
+                  {/* {getReadMe(item.name)}
+                  {getContent(dataReadMe.content)} */}
+                </Typography>
               </CardContent>
               <CardActions disableSpacing>
                 <IconButton href={item.html_url} title="star">
