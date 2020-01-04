@@ -28,7 +28,7 @@ import {
   Typography,
 } from '@material-ui/core/'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import MenuIcon from '@material-ui/icons/Menu'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 // Styling with JSS
 const drawerWidth = 240
@@ -136,7 +136,7 @@ export default () => {
             onClick={handleDrawerOpen}
             className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
           >
-            <MenuIcon />
+            <ChevronRightIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" noWrap className={classes.title}>
             CV en ligne

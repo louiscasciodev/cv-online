@@ -26,6 +26,7 @@ import StarIcon from '@material-ui/icons/Star'
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
+    justifyContent: 'center',
   },
   card: {
     width: 345,
@@ -33,10 +34,6 @@ const useStyles = makeStyles(theme => ({
   },
   cardHeader: {
     // backgroundColor: '#DFE0E0',
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -66,7 +63,7 @@ export default () => {
   // Convert UTC numeric date to String
   const getDate = (date) => {
     let dateobj = new Date(`${date}`)
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
     let result = dateobj.toLocaleDateString('fr-CA', options)
     return result
   }
@@ -85,38 +82,40 @@ export default () => {
       {/* mapping all reposit */}
       {data && data
         .map((item, key) => (
-          <Card className={classes.card}>
-            <CardHeader
-              className={classes.cardHeader}
-              avatar={
-                item.description === "react" ?
-                  <Icon className="fab fa-react fa-spin" style={{ color: "rgb(97, 218, 251)" }} /> :
-                  item.description === "vue" ?
-                    <Icon className="fab fa-vuejs" style={{ color: "rgb(65, 184, 131)" }} /> :
-                    <Avatar aria-label="recipe" className={classes.avatar}>JS</Avatar>
-                // <Avatar aria-label="recipe" src={item.owner.avatar_url} className={classes.avatar} />
-              }
-              action={
-                <IconButton aria-label="settings" target="_blank" href={item.html_url} title="view more">
-                  <MoreVertIcon />
+          < div key={item.id}>
+            <Card className={classes.card}>
+              <CardHeader
+                className={classes.cardHeader}
+                avatar={
+                  item.description === "react" ?
+                    <Icon className="fab fa-react fa-spin" style={{ color: "rgb(97, 218, 251)" }} /> :
+                    item.description === "vue" ?
+                      <Icon className="fab fa-vuejs" style={{ color: "rgb(65, 184, 131)" }} /> :
+                      <Avatar aria-label="recipe" className={classes.avatar}>JS</Avatar>
+                  // <Avatar aria-label="recipe" src={item.owner.avatar_url} className={classes.avatar} />
+                }
+                action={
+                  <IconButton aria-label="settings" target="_blank" href={item.html_url} title="view more">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title={item.name}
+                subheader={`Mis à jour le ${getDate(item.updated_at)}`}
+              />
+              <Divider />
+              {/* ReadMe Component*/}
+              <GithubReadMe repo={item.name} />
+              {/* ReadMe Component*/}
+              <CardActions disableSpacing>
+                <IconButton target="_blank" href={item.html_url} title="star">
+                  <StarIcon />
                 </IconButton>
-              }
-              title={item.name}
-              subheader={`Mis à jour: ${getDate(item.updated_at)}`}
-            />
-            <Divider />
-            {/* ReadMe Component*/}
-            <GithubReadMe repo={item.name} />
-            {/* ReadMe Component*/}
-            <CardActions disableSpacing>
-              <IconButton href={item.html_url} title="star">
-                <StarIcon />
-              </IconButton>
-              <IconButton href={item.html_url} title="fork">
-                <ShareIcon />
-              </IconButton>
-            </CardActions>
-          </Card>
+                <IconButton target="_blank" href={item.html_url} title="fork">
+                  <ShareIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </div>
         ))}
     </Grid>
   )
