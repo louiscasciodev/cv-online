@@ -28,7 +28,7 @@ export default () => {
     <div>
       <ListSubheader inset>Projets</ListSubheader>
       <Divider variant="inset" component="li" />
-      <Link to={`${path.path}/allprojects`}>
+      <Link to={`${path.path}/all`}>
         <ListItem button>
           <ListItemIcon>
             <ListIcon />
@@ -36,7 +36,7 @@ export default () => {
           <ListItemText primary="Tous" />
         </ListItem>
       </Link>
-      <Link to={`${path.path}/juleetlili`}>
+      <Link to={`${path.path}/3`}>
         <ListItem button>
           <ListItemIcon>
             <Filter3Icon />
@@ -44,7 +44,7 @@ export default () => {
           <ListItemText primary="Projet 3" />
         </ListItem>
       </Link>
-      <Link to={`${path.path}/plantme`}>
+      <Link to={`${path.path}/2`}>
         <ListItem button>
           <ListItemIcon>
             <Filter2Icon />
@@ -52,7 +52,7 @@ export default () => {
           <ListItemText primary="Projet 2" />
         </ListItem>
       </Link>
-      <Link to={`${path.path}/charlotteurbex`}>
+      <Link to={`${path.path}/1`}>
         <ListItem button>
           <ListItemIcon>
             <Filter1Icon />

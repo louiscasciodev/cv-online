@@ -177,10 +177,10 @@ export default () => {
         <Container maxWidth="lg" className={classes.container}>
           <Switch>
             <Route exact path={`${path.path}/`} component={Github} />
-            <Route path={`${path.path}/allprojects`} component={Github} />
-            <Route path={`${path.path}/juleetlili`} component={HomeJuleEtLili} />
-            <Route path={`${path.path}/plantme`} component={HomePlantMe} />
-            <Route path={`${path.path}/charlotteurbex`} component={HomeCharlotteUrbex} />
+            <Route path={`${path.path}/all`} component={Github} />
+            <Route path={`${path.path}/3`} component={HomeJuleEtLili} />
+            <Route path={`${path.path}/2`} component={HomePlantMe} />
+            <Route path={`${path.path}/1`} component={HomeCharlotteUrbex} />
             <Route path={`${path.path}/cv`} >
               <HomeCv />
             </Route>

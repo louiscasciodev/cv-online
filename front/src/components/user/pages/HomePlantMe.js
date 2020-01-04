@@ -10,7 +10,6 @@ import backgroundImage from '../../../assets/images/plantme.jpg'
 // MUI Components
 import { makeStyles } from '@material-ui/core/styles'
 import {
-  Avatar,
   Card,
   CardActions,
   CardHeader,
@@ -107,8 +106,9 @@ export default () => {
                     <Icon className="fab fa-react fa-spin" style={{ color: "rgb(97, 218, 251)" }} /> :
                     data.description === "vue" ?
                       <Icon className="fab fa-vuejs" style={{ color: "rgb(65, 184, 131)" }} /> :
-                      <Avatar aria-label="recipe" className={classes.avatar}>JS</Avatar>
-                  // <Avatar aria-label="recipe" src={data.owner.avatar_url} className={classes.avatar} />
+                      <Icon className="fab fa-js-square" style={{ color: "rgba(0, 0, 0, 0.54)" }} />
+                  // <Avatar aria-label="recipe" className={classes.avatar}>JS</Avatar>
+                  // <Avatar aria-label="recipe" src={item.owner.avatar_url} className={classes.avatar} />
                 }
                 action={
                   <IconButton aria-label="settings" target="_blank" href={data.html_url} title="view more">
