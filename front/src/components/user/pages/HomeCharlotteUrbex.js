@@ -5,14 +5,16 @@ import { loadCSS } from 'fg-loadcss'
 
 // Personals Components
 import { GithubReadMe } from './'
+import backgroundImage from '../../../assets/images/charlotte-urbex.jpg'
 
 // MUI Components
 import { makeStyles } from '@material-ui/core/styles'
 import {
   Avatar,
   Card,
-  CardHeader,
   CardActions,
+  CardHeader,
+  CardMedia,
   Divider,
   Grid,
   Icon,
@@ -30,10 +32,17 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     width: 345,
-    margin: 20,
   },
   cardHeader: {
     // backgroundColor: '#DFE0E0',
+  },
+  cardMedia: {
+    boxShadow: theme.shadows[5],
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+    backgroundPosition: 'top left',
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -46,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    // filter: 'grayscale(100%)',
+    filter: 'grayscale(100%)',
   },
 }))
 
@@ -56,7 +65,7 @@ export default () => {
 
   const getRepos = () => {
     axios
-      .get('https://api.github.com/users/louiscasciodev/repos?sort=created')
+      .get('https://api.github.com/repos/louiscasciodev/CharlotteUrbex')
       .then(result => setData(result.data))
   }
 
@@ -77,46 +86,55 @@ export default () => {
   }, []);
 
   return (
-    <Grid container className={classes.container}>
-      {console.log("data", data)}
-      {/* mapping all reposit */}
-      {data && data
-        .map((item, key) => (
-          < div key={item.id}>
+    <Grid container className={classes.container} spacing={4}>
+      <Grid item xs={false} md={8} lg={8}>
+        <Card className={classes.cardMedia}>
+          <CardMedia
+            className={classes.media}
+            image={backgroundImage}
+            title="Portfolio de Charlotte Urbex"
+          />
+        </Card>
+      </Grid>
+      <Grid item className={classes.container} xs={12} md={4} lg={4}>
+        {data &&
+          < div key={data.id}>
             <Card className={classes.card}>
               <CardHeader
                 className={classes.cardHeader}
                 avatar={
-                  item.description === "react" ?
+                  data.description === "react" ?
                     <Icon className="fab fa-react fa-spin" style={{ color: "rgb(97, 218, 251)" }} /> :
-                    item.description === "vue" ?
+                    data.description === "vue" ?
                       <Icon className="fab fa-vuejs" style={{ color: "rgb(65, 184, 131)" }} /> :
                       <Avatar aria-label="recipe" className={classes.avatar}>JS</Avatar>
-                  // <Avatar aria-label="recipe" src={item.owner.avatar_url} className={classes.avatar} />
+                  // <Avatar aria-label="recipe" src={data.owner.avatar_url} className={classes.avatar} />
                 }
                 action={
-                  <IconButton aria-label="settings" target="_blank" href={item.html_url} title="view more">
+                  <IconButton aria-label="settings" target="_blank" href={data.html_url} title="view more">
                     <MoreVertIcon />
                   </IconButton>
                 }
-                title={item.name}
-                subheader={`Mis à jour le ${getDate(item.updated_at)}`}
+                title={data.name}
+                subheader={`Mis à jour le ${getDate(data.updated_at)}`}
               />
               <Divider />
               {/* ReadMe Component*/}
-              <GithubReadMe repo={item.name} />
+              {console.log(data.name)}
+              <GithubReadMe repo={data.name} />
               {/* ReadMe Component*/}
               <CardActions disableSpacing>
-                <IconButton target="_blank" href={item.html_url} title="star">
+                <IconButton target="_blank" href={data.html_url} title="star">
                   <StarIcon />
                 </IconButton>
-                <IconButton target="_blank" href={item.html_url} title="fork">
+                <IconButton target="_blank" href={data.html_url} title="fork">
                   <ShareIcon />
                 </IconButton>
               </CardActions>
             </Card>
           </div>
-        ))}
+        }
+      </Grid>
     </Grid>
   )
 }

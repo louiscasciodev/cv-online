@@ -87,7 +87,7 @@ const useStyles = makeStyles(theme => ({
 
 export default (props) => {
   const classes = useStyles()
-  const realPass = 'reach me'
+  const realPass = 'javascript'
 
   const [blurred, setBlurred] = useState(true)
   const [textFieldValue, settextFieldValue] = useState('')

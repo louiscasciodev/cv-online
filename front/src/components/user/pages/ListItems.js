@@ -52,7 +52,7 @@ export default () => {
           <ListItemText primary="Projet 2" />
         </ListItem>
       </Link>
-      <Link to={`${path.path}/charlotte-urbex`}>
+      <Link to={`${path.path}/charlotteurbex`}>
         <ListItem button>
           <ListItemIcon>
             <Filter1Icon />

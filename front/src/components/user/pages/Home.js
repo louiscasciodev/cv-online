@@ -8,7 +8,7 @@ import {
 } from "react-router-dom"
 
 // Personals Components
-import { HomeCv, HomeJuleEtLili, HomePlantMe, Github, ListItems } from './'
+import { HomeCharlotteUrbex, HomeCv, HomeJuleEtLili, HomePlantMe, Github, ListItems } from './'
 import { Copyright } from '../common'
 
 // Personal CSS
@@ -18,6 +18,7 @@ import "../../../assets/css/home.css"
 import { makeStyles } from '@material-ui/core/styles'
 import {
   AppBar,
+  Avatar,
   Box,
   Container,
   Divider,
@@ -98,6 +99,10 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
     overflow: 'auto',
   },
+  avatar: {
+    marginRight: '10px',
+    boxShadow: theme.shadows[1],
+  },
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
@@ -151,6 +156,7 @@ export default () => {
         open={open}
       >
         <div className={classes.toolbarIcon}>
+          <Avatar aria-label="recipe" src="https://avatars1.githubusercontent.com/u/55145958?v=4" className={classes.avatar} />
           <Typography variant="subtitle2" color="inherit">
             Louis Cascio
           </Typography>
@@ -175,6 +181,7 @@ export default () => {
             <Route path={`${path.path}/allprojects`} component={Github} />
             <Route path={`${path.path}/juleetlili`} component={HomeJuleEtLili} />
             <Route path={`${path.path}/plantme`} component={HomePlantMe} />
+            <Route path={`${path.path}/charlotteurbex`} component={HomeCharlotteUrbex} />
             <Route path={`${path.path}/cv`} >
               <HomeCv />
             </Route>
