@@ -8,7 +8,7 @@ import Cv from '../../../assets/images/cv-louis-cascio-javascript.pdf'
 import { makeStyles } from '@material-ui/core/styles'
 import {
   Grid,
-  Paper,
+  Button,
 } from '@material-ui/core/'
 
 // Styling with JSS
@@ -21,6 +21,13 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "70vh",
   },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+    backgroundColor: '#5E6780',
+    '&:hover': {
+      backgroundColor: '#717EA3',
+    }
+  }
 }))
 
 export default () => {
@@ -29,9 +36,21 @@ export default () => {
   return (
     <Grid container className={classes.container}>
       <Grid item xs={12} md={8} lg={9}>
-        <Paper>
-          <embed src={Cv} className={classes.media} type="application/pdf"></embed>
-        </Paper>
+        <Button
+          fullWidth
+          className={classes.submit}
+          variant="contained"
+          color="primary"
+          href={Cv}
+          download="cv-louis-cascio-javascript"
+        >
+          Télécharger le pdf
+        </Button>
+        {window.screen.width > 600 ?
+          (<object aria-label="pdf" data={Cv} type='application/pdf' className={classes.media}></object>)
+          :
+          (null)
+        }
       </Grid>
     </Grid>
   );

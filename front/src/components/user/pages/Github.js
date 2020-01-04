@@ -28,8 +28,19 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
   },
   card: {
-    width: 345,
-    margin: 20,
+    padding: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      width: 260,
+      margin: 10,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 300,
+      margin: 20,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 350,
+      margin: 20,
+    },
   },
   cardHeader: {
     // backgroundColor: '#DFE0E0',
@@ -90,7 +101,7 @@ export default () => {
                     <Icon className="fab fa-react fa-spin" style={{ color: "rgb(97, 218, 251)" }} /> :
                     item.description === "vue" ?
                       <Icon className="fab fa-vuejs" style={{ color: "rgb(65, 184, 131)" }} /> :
-                      <Icon className="fab fa-js-square" style={{ color: "rgba(0, 0, 0, 0.54)" }}/>
+                      <Icon className="fab fa-js-square" style={{ color: "rgba(0, 0, 0, 0.54)" }} />
                   // <Avatar aria-label="recipe" className={classes.avatar}>JS</Avatar>
                   // <Avatar aria-label="recipe" src={item.owner.avatar_url} className={classes.avatar} />
                 }

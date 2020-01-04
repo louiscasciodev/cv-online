@@ -29,8 +29,24 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
   },
+  containerGlobal: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '10px',
+  },
   card: {
-    width: 345,
+    [theme.breakpoints.down('sm')]: {
+      width: 260,
+      margin: 10,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 300,
+      margin: 20,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 350,
+      margin: 20,
+    },
   },
   cardHeader: {
     // backgroundColor: '#DFE0E0',
@@ -85,7 +101,7 @@ export default () => {
   }, []);
 
   return (
-    <Grid container className={classes.container} spacing={4}>
+    <Grid container className={classes.containerGlobal} spacing={4}>
       <Grid item xs={false} md={8} lg={8}>
         <Card className={classes.cardMedia}>
           <CardMedia
