@@ -1,3 +1,4 @@
+import Copyright from './Copyright'
 import Home from './Home'
 import HomeCharlotteUrbex from './HomeCharlotteUrbex'
 import HomeCv from './HomeCv'
@@ -8,4 +9,4 @@ import GithubReadMe from './GithubReadMe'
 import ListItems from './ListItems'
 import SignIn from './SignIn'
 
-export { Home, HomeCharlotteUrbex, HomeCv, HomeJuleEtLili, HomePlantMe, Github, GithubReadMe, ListItems, SignIn }
+export { Copyright, Home, HomeCharlotteUrbex, HomeCv, HomeJuleEtLili, HomePlantMe, Github, GithubReadMe, ListItems, SignIn }

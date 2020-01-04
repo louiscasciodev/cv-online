@@ -8,8 +8,7 @@ import {
 } from "react-router-dom"
 
 // Personals Components
-import { HomeCharlotteUrbex, HomeCv, HomeJuleEtLili, HomePlantMe, Github, ListItems } from './'
-import { Copyright } from '../common'
+import { Copyright, HomeCharlotteUrbex, HomeCv, HomeJuleEtLili, HomePlantMe, Github, ListItems } from './'
 
 // Personal CSS
 import "../../../assets/css/home.css"

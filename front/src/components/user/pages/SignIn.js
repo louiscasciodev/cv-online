@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 import { useHistory } from "react-router-dom"
 
 // Personals Components
-import { Copyright } from '../common'
+import { Copyright } from './'
 import backgroundVideo from '../../../assets/videos/video.mp4'
-import backgroundImage from '../../../assets/images/CV-Louis-Cascio-JavaScript.png'
+import backgroundImage from '../../../assets/images/cv-louis-cascio-javaScript.png'
 
 // Personal CSS
 import "../../../assets/css/sign-in.css"
