@@ -45,13 +45,20 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   root2: {
+    width: '100%',
     zIndex: theme.zIndex.drawer + 1,
     display: 'block',
+    margin: 'auto',
     position: 'absolute',
     bottom: 0,
     flexGrow: 1,
     maxWidth: 500,
     backgroundColor: '#DFE0E0',
+  },
+  tabs: {
+    width: '100%',
+    display:'flex',
+    justifyContent: 'center',
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
@@ -216,6 +223,7 @@ export default () => {
             <Tabs
               value={value}
               onChange={handleChange}
+              className={classes.tabs}
               variant="fullWidth"
               indicatorColor="secondary"
               textColor="inherit"
