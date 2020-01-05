@@ -123,19 +123,22 @@ export default (props) => {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item className="left-pane" xs={false} sm={5} md={7}>
-        <Grid item className="background-video" xs={false} sm={8} md={8} >
-          <video className={classes.videoTag} autoPlay loop muted>
-            <source src={backgroundVideo} type='video/mp4' />
-          </video>
-        </Grid>
-        <Grid item className="background-video" xs={false} sm={1} md={11} >
-          <img className={blurred ? "image" : "image slide-out-blurred-right"}
-            src={backgroundImage}
-            alt="Curriculum vitæ"
-          />
-        </Grid>
-      </Grid>
+      {/* DEBUT | Cacher le fond vidéo & photo pour les écrans < 600px */}
+      {window.screen.width > 600 ? (
+        <Grid item className="left-pane" xs={false} sm={5} md={7}>
+          <Grid item className="background-video" xs={false} sm={8} md={8} >
+            <video className={classes.videoTag} autoPlay loop muted>
+              <source src={backgroundVideo} type='video/mp4' />
+            </video>
+          </Grid>
+          <Grid item className="background-video" xs={false} sm={1} md={11} >
+            <img className={blurred ? "image" : "image slide-out-blurred-right"}
+              src={backgroundImage}
+              alt="Curriculum vitæ"
+            />
+          </Grid>
+        </Grid>) : (null)}
+      {/* FIN | Cacher le fond vidéo & photo pour les écrans < 600px */}
       <Grid item xs={12} sm={7} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>

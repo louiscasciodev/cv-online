@@ -49,15 +49,14 @@ const useStyles = makeStyles(theme => ({
     zIndex: theme.zIndex.drawer + 1,
     display: 'block',
     margin: 'auto',
-    position: 'absolute',
+    position: 'fixed',
     bottom: 0,
     flexGrow: 1,
-    maxWidth: 500,
     backgroundColor: '#DFE0E0',
   },
   tabs: {
     width: '100%',
-    display:'flex',
+    display: 'flex',
     justifyContent: 'center',
   },
   toolbar: {
@@ -159,6 +158,7 @@ export default () => {
 
   return (
     <div className={classes.root}>
+      {/* Header desktop repliable, pour les écrans > 600px */}
       {window.screen.width > 600 ? (
         <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
           <Toolbar className={classes.toolbar}>
@@ -175,8 +175,10 @@ export default () => {
               CV en ligne
           </Typography>
           </Toolbar>
-        </AppBar>) : (
+        </AppBar>) :
+        (
           <AppBar position="absolute" className={clsx(classes.appBar)}>
+            {/* Sinon Header statique pour les écrans < 600px */}
             <Toolbar className={classes.toolbar}>
               <IconButton
                 edge="start"
@@ -193,6 +195,7 @@ export default () => {
             </Toolbar>
           </AppBar>
         )}
+      {/* Menu desktop repliable, pour les écrans > 600px */}
       {window.screen.width > 600 ?
         (
           <Drawer
@@ -215,11 +218,10 @@ export default () => {
             <List>
               <ListItems />
             </List>
-          </Drawer>
-        )
-        :
+          </Drawer>) :
         (
-          <Box square className={classes.root2}>
+          <Box className={classes.root2}>
+            {/* Sinon menu mobile sous forme de Tabs, pour les écrans > 600px */}
             <Tabs
               value={value}
               onChange={handleChange}
@@ -238,6 +240,7 @@ export default () => {
           </Box>
         )
       }
+      {/* Contenu du site commun à tous les devices */}
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
@@ -251,11 +254,12 @@ export default () => {
               <HomeCv />
             </Route>
           </Switch>
-          <Box pt={4}>
+          <Box mt={4} mb={'48px'}>
             <Copyright />
           </Box>
         </Container>
       </main>
+      {/* Contenu du site commun à tous les devices */}
     </div >
   )
 }

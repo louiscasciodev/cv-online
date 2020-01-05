@@ -103,7 +103,7 @@ export default () => {
       </Box>
       <Grid container className={classes.container}>
         {console.log("data", data)}
-        {/* mapping all reposit */}
+        {/* mapping de tous les repos github */}
         {data && data
           .map((item, key) => (
             < div key={item.id}>

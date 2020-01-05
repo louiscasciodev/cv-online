@@ -60,11 +60,13 @@ export default () => {
           >
             Télécharger le pdf
           </Button>
+          {/* DEBUT | Cacher la liseuse pdf pour les écrans < 600px */}
           {window.screen.width > 600 ?
             (<object aria-label="pdf" data={Cv} type='application/pdf' className={classes.media}></object>)
             :
             (null)
           }
+          {/* FIN | Cacher la liseuse pdf pour les écrans < 600px */}
         </Grid>
       </Grid>
     </>

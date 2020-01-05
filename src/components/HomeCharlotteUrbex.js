@@ -149,7 +149,6 @@ export default () => {
               />
               <Divider />
               {/* ReadMe Component*/}
-              {console.log(data.name)}
               <GithubReadMe repo={data.name} />
               {/* ReadMe Component*/}
               <CardActions disableSpacing>
