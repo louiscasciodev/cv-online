@@ -9,6 +9,7 @@ import { GithubReadMe } from './'
 // MUI Components
 import { makeStyles } from '@material-ui/core/styles'
 import {
+  Box,
   Card,
   CardHeader,
   CardActions,
@@ -16,6 +17,7 @@ import {
   Grid,
   Icon,
   IconButton,
+  Typography,
 } from '@material-ui/core/'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import ShareIcon from '@material-ui/icons/Share'
@@ -23,6 +25,12 @@ import StarIcon from '@material-ui/icons/Star'
 
 // Styling with JSS
 const useStyles = makeStyles(theme => ({
+  box: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '20px',
+    color: theme.palette.text.secondary,
+  },
   container: {
     display: 'flex',
     justifyContent: 'center',
@@ -87,47 +95,54 @@ export default () => {
   }, []);
 
   return (
-    <Grid container className={classes.container}>
-      {console.log("data", data)}
-      {/* mapping all reposit */}
-      {data && data
-        .map((item, key) => (
-          < div key={item.id}>
-            <Card className={classes.card}>
-              <CardHeader
-                className={classes.cardHeader}
-                avatar={
-                  item.description === "react" ?
-                    <Icon className="fab fa-react fa-spin" style={{ color: "rgb(97, 218, 251)" }} /> :
-                    item.description === "vue" ?
-                      <Icon className="fab fa-vuejs" style={{ color: "rgb(65, 184, 131)" }} /> :
-                      <Icon className="fab fa-js-square" style={{ color: "rgba(0, 0, 0, 0.54)" }} />
-                  // <Avatar aria-label="recipe" className={classes.avatar}>JS</Avatar>
-                  // <Avatar aria-label="recipe" src={item.owner.avatar_url} className={classes.avatar} />
-                }
-                action={
-                  <IconButton aria-label="settings" target="_blank" href={item.html_url} title="view more">
-                    <MoreVertIcon />
+    <>
+      <Box className={classes.box}>
+        <Typography variant='h6'>
+          Tous les projets
+        </Typography>
+      </Box>
+      <Grid container className={classes.container}>
+        {console.log("data", data)}
+        {/* mapping all reposit */}
+        {data && data
+          .map((item, key) => (
+            < div key={item.id}>
+              <Card className={classes.card}>
+                <CardHeader
+                  className={classes.cardHeader}
+                  avatar={
+                    item.description === "react" ?
+                      <Icon className="fab fa-react fa-spin" style={{ color: "rgb(97, 218, 251)" }} /> :
+                      item.description === "vue" ?
+                        <Icon className="fab fa-vuejs" style={{ color: "rgb(65, 184, 131)" }} /> :
+                        <Icon className="fab fa-js-square" style={{ color: "rgba(0, 0, 0, 0.54)" }} />
+                    // <Avatar aria-label="recipe" className={classes.avatar}>JS</Avatar>
+                    // <Avatar aria-label="recipe" src={item.owner.avatar_url} className={classes.avatar} />
+                  }
+                  action={
+                    <IconButton aria-label="settings" target="_blank" href={item.html_url} title="view more">
+                      <MoreVertIcon />
+                    </IconButton>
+                  }
+                  title={item.name}
+                  subheader={`Mis à jour le ${getDate(item.updated_at)}`}
+                />
+                <Divider />
+                {/* ReadMe Component*/}
+                <GithubReadMe repo={item.name} />
+                {/* ReadMe Component*/}
+                <CardActions disableSpacing>
+                  <IconButton target="_blank" href={item.html_url} title="star">
+                    <StarIcon />
                   </IconButton>
-                }
-                title={item.name}
-                subheader={`Mis à jour le ${getDate(item.updated_at)}`}
-              />
-              <Divider />
-              {/* ReadMe Component*/}
-              <GithubReadMe repo={item.name} />
-              {/* ReadMe Component*/}
-              <CardActions disableSpacing>
-                <IconButton target="_blank" href={item.html_url} title="star">
-                  <StarIcon />
-                </IconButton>
-                <IconButton target="_blank" href={item.html_url} title="fork">
-                  <ShareIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </div>
-        ))}
-    </Grid>
+                  <IconButton target="_blank" href={item.html_url} title="fork">
+                    <ShareIcon />
+                  </IconButton>
+                </CardActions>
+              </Card>
+            </div>
+          ))}
+      </Grid>
+    </>
   )
 }

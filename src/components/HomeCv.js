@@ -8,11 +8,19 @@ import Cv from '../assets/images/cv-louis-cascio-javascript.pdf'
 import { makeStyles } from '@material-ui/core/styles'
 import {
   Grid,
+  Box,
   Button,
+  Typography,
 } from '@material-ui/core/'
 
 // Styling with JSS
 const useStyles = makeStyles(theme => ({
+  box: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '20px',
+    color: theme.palette.text.secondary,
+  },
   container: {
     display: 'flex',
     justifyContent: 'center',
@@ -34,24 +42,31 @@ export default () => {
   const classes = useStyles()
 
   return (
-    <Grid container className={classes.container}>
-      <Grid item xs={12} md={8} lg={9}>
-        <Button
-          fullWidth
-          className={classes.submit}
-          variant="contained"
-          color="primary"
-          href={Cv}
-          download="cv-louis-cascio-javascript"
-        >
-          Télécharger le pdf
-        </Button>
-        {window.screen.width > 600 ?
-          (<object aria-label="pdf" data={Cv} type='application/pdf' className={classes.media}></object>)
-          :
-          (null)
-        }
+    <>
+      <Box className={classes.box}>
+        <Typography variant='h6'>
+          Curriculum vitæ
+        </Typography>
+      </Box>
+      <Grid container className={classes.container}>
+        <Grid item xs={12} md={8} lg={9}>
+          <Button
+            fullWidth
+            className={classes.submit}
+            variant="contained"
+            color="primary"
+            href={Cv}
+            download="cv-louis-cascio-javascript"
+          >
+            Télécharger le pdf
+          </Button>
+          {window.screen.width > 600 ?
+            (<object aria-label="pdf" data={Cv} type='application/pdf' className={classes.media}></object>)
+            :
+            (null)
+          }
+        </Grid>
       </Grid>
-    </Grid>
-  );
+    </>
+  )
 }
