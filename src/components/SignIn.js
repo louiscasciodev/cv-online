@@ -4,11 +4,11 @@ import { useHistory } from "react-router-dom"
 
 // Personals Components
 import { Copyright } from './'
-import backgroundVideo from '../../../assets/videos/video.mp4'
-import backgroundImage from '../../../assets/images/cv-louis-cascio-javaScript.png'
+import backgroundVideo from '../assets/videos/video.mp4'
+import backgroundImage from '../assets/images/cv-louis-cascio-javaScript.png'
 
 // Personal CSS
-import "../../../assets/css/sign-in.css"
+import "../assets/css/sign-in.css"
 
 // MUI Components
 import { makeStyles } from '@material-ui/core/styles'

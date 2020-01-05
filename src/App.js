@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 // Personals Components
-import { Home, SignIn } from './components/user/pages'
+import { Home, SignIn } from './components'
 
 // MUI Components
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';

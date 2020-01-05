@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Personals Components
-import Cv from '../../../assets/images/cv-louis-cascio-javascript.pdf'
+import Cv from '../assets/images/cv-louis-cascio-javascript.pdf'
 
 // MUI Components
 import { makeStyles } from '@material-ui/core/styles'

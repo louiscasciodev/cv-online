@@ -5,17 +5,19 @@ import { loadCSS } from 'fg-loadcss'
 
 // Personals Components
 import { GithubReadMe } from './'
-import backgroundImage from '../../../assets/images/jule-et-lili.jpg'
+import backgroundImage from '../assets/images/plantme.jpg'
 
 // MUI Components
 import { makeStyles } from '@material-ui/core/styles'
 import {
+  Box,
   Card,
   CardActions,
   CardHeader,
   CardMedia,
   Divider,
   Grid,
+  Typography,
   Icon,
   IconButton,
 } from '@material-ui/core/'
@@ -25,6 +27,12 @@ import StarIcon from '@material-ui/icons/Star'
 
 // Styling with JSS
 const useStyles = makeStyles(theme => ({
+  box: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '20px',
+    color: theme.palette.text.secondary,
+  },
   container: {
     display: 'flex',
     justifyContent: 'center',
@@ -80,7 +88,7 @@ export default () => {
 
   const getRepos = () => {
     axios
-      .get('https://api.github.com/repos/louiscasciodev/jule-et-lili-clone')
+      .get('https://api.github.com/repos/louiscasciodev/plantme-clone')
       .then(result => setData(result.data))
   }
 
@@ -102,12 +110,17 @@ export default () => {
 
   return (
     <Grid container className={classes.containerGlobal} spacing={4}>
-      <Grid item xs={false} md={8} lg={8}>
+      <Grid item md={8} lg={8}>
+        <Box className={classes.box}>
+          <Typography variant='h6'>
+            Projet 2: PlantMe
+          </Typography>
+        </Box>
         <Card className={classes.cardMedia}>
           <CardMedia
             className={classes.media}
             image={backgroundImage}
-            title="e-shop Jule et Lili"
+            title="Site PlantMe"
           />
         </Card>
       </Grid>

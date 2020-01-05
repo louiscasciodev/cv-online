@@ -14,9 +14,9 @@ import {
   ListSubheader,
 } from '@material-ui/core/'
 import AttachmentIcon from '@material-ui/icons/Attachment'
-import Filter1Icon from '@material-ui/icons/Filter1';
-import Filter2Icon from '@material-ui/icons/Filter2';
-import Filter3Icon from '@material-ui/icons/Filter3';
+import Filter1Icon from '@material-ui/icons/Filter1'
+import Filter2Icon from '@material-ui/icons/Filter2'
+import Filter3Icon from '@material-ui/icons/Filter3'
 import ListIcon from '@material-ui/icons/List'
 
 export default () => {
